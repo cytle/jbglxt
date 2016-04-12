@@ -1,0 +1,281 @@
+
+img{ display:block;}
+img,body{ margin:0px;}
+.clearbox{clear:both;}
+.overflow{overflow:hidden;}
+img,dl,dd{margin:0; padding:0}
+.overflowH{ overflow:hidden}
+a{ text-decoration:none}
+li{ list-style:none;}
+label {
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+hr{
+    border-width: 0px;
+    border-top: 1px solid #ccc;
+    margin-bottom: 20px;
+}
+input{
+    border: 1px solid #ccc;
+    border-radius: 4px; padding: 6px 12px;width: 100%;
+    margin: 0px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    position: relative;
+    top: 0px;
+}
+
+body{margin:0px;font-size: 12px;  font-family: "lucida Grande",Verdana,"Microsoft YaHei";}
+.row{margin: 0px -15px;}
+.row:after, .row:before {
+    display: table;
+    content: " ";
+}
+.row:after{
+    clear:both;
+}
+.col-12,.col-3,.col-6{
+    float: left;
+    padding: 15px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.col-3{
+    width: 25%;
+}
+.col-6{
+    width: 50%;
+}
+.col-12{
+    width: 100%;
+}
+.container{ width:1096px;margin:0px auto;position: relative;}
+.control-label{font-weight: normal;}
+.btn{
+    background-color: transparent;
+    border:1px solid #ccc;
+    border-radius: 4px;
+    padding: 5px 12px;
+    color: #333;
+    cursor: pointer;
+}
+.btn:hover{
+    color: #000;
+    box-shadow: 0 0 3px rgba(22,22,22,0.2);
+}
+.lead{
+    font-size: 18px; color: #555;font-weight: 100;    font-weight: 300;
+    line-height: 1.4;
+    margin-bottom: 20px;
+}
+/*******************index*******************/
+.index-body{background-image: url(../images/projectbg.png);}
+.headerbg{ background-image: url(../images/headerbg.png);}
+.headerbox{ padding: 10px; }
+.headerbox .logo{height: 100px; }
+.headerbox .logo img{height: 100%; }
+/*导航*/
+.navbg{background-image:url(../images/navbg.png);}
+.navbox a{font-size: 14px;line-height:59px;color:#e5e5e5;padding-left: 15px;padding-right: 15px;float: left;}
+.choose{background-color:#1b1b1b}
+.navbox a:hover{background-color:#1b1b1b;color:white}
+
+.topnavbox{ position:fixed;top:0; width:100%; opacity:0.8; z-index:1;}
+
+/*通告*/
+.bannerbox{ position:relative;height: 558px; width:100%;background: transparent center center no-repeat;background-size:  auto 100%}
+.bannerbox img{max-width: 100%;}
+/**/
+.project{margin-bottom: 46px}
+
+.probox{
+    box-shadow:2px 2px 1px #e5e5e5;
+    height: 311px;
+    border:  solid 1px #dedede; 
+    background-color: #f6f6f6;
+    cursor: pointer;
+}
+.probox:hover{
+    box-shadow:2px 2px 10px #aaa;
+}
+.probox:last-child{margin-right: 0px;}
+.probox-title{
+    padding: 10px 10px 0px;
+    height: 50px;
+}
+.probox-content{padding: 0px 10px;}
+.probox-cover{height: 126px;background-color:white;border-bottom: 1px solid #eee}
+.prodown{
+
+}
+.prodown h2{
+    line-height: 26px;font-size: 16px;font-weight: 300;
+}
+.prodown dl{ 
+    background-color: white;
+    border:  solid 1px #dedede;
+    box-shadow:2px 2px 1px #e5e5e5;
+}
+.prodown dd a{ 
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    display: inline-block;
+    color: #555;
+    font-size: 12px;
+    line-height:20px;
+    width: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.prodown dd a:hover{ 
+    color: #569;
+}
+
+/*******************index end*******************/
+
+
+/*******************login*******************/
+
+.bgbox{background:url(../images/4.png) #666 center center;height:630px ;}
+.login{opacity:0.95;background-color:#999 ;position: absolute; width:350px; right:20px;top:40px}
+.login p{ text-align:center; line-height:20px;}
+.login a{color:#008cc8}
+.loginbox h1,.loginbox h2{text-align:center;}
+.loginbox h1{ font-size:20px;color:#333;margin: 0px; }
+.loginbox h2{ font-size:16px;color:#999; font-weight: lighter;}
+
+.boxlogo{width:100%; height: 80px;}
+.loginbox{ 
+    position:relative;padding:20px 15px 20px;background-color:#eeeeee;
+}
+.loginbox input{
+    margin-bottom:10px;
+}
+
+.loginbox dl{ }
+.loginbox dt{font-size: 12px;margin-bottom:4px; }
+.loginbox dd{color:#66696a;}
+.loginbox h3{ color:#999999; font-weight:normal;margin-left:40px;  height:34px; word-break:normal }
+.btn.joinBtn{
+    color:white;
+    text-align:center;
+    border-radius:3px;
+    padding: 10px 22px;
+    background-color:#008cc8;
+    border: 1px solid #008cc8;
+}
+.btn.joinBtn:hover{
+    border: 1px solid #008cc8;
+    background: #008cD8;
+    color: #eee;
+}
+
+.help{background-color:#333; padding-top:10px; padding-bottom:10px;}
+.findbox{ 
+    width: 100%;
+    color:#999; text-align:center;
+    vertical-align:middle;margin: 10px 0px;display: inline-block;
+}
+.findbox label{ 
+    color:#999; 
+    font-size: 12px;
+}
+.findbox input{width:200px; margin-right:10px;}
+.find a{ color:#444; background-color:#dcdcdc; border-radius:3px;border: solid 1px #a7a7a7;}
+.cont,.cont ul,.cont a{color:#999;}
+.cont{ margin-top:10px; font-size:14px; float:left;height: 70px;width: 540px}
+.cont span{ font-size: 1.1em;display: block;}
+.cont ul{width:450px;line-height:20px;float:left;padding-left: 20px;}
+.cont li{float:left;  border-right: solid 1px #999;font-size: 12px;line-height: 14px;padding-left:10px;padding-right:10px;}
+.cont li:last-child{border-right-width:0px; }
+.cont a{}
+
+/*******************login end*******************/
+
+.footer{ background-color:black;}
+.footerbox{text-align:center; }
+.footerbox a{line-height:64px; color:#aaa; margin-left:3px; margin-right:3px}
+
+
+
+#baoming{
+    border-bottom:1px solid #ccc;text-align:center;margin:20px auto;margin-bottom:30px;
+}
+#baomingf{
+    border-radius:10px;border:1px solid #ccc;
+    padding: 15px;
+}
+#baomingf input{
+    margin-bottom: 15px;
+}
+.detail-box{
+    background: #FFF;
+}
+.gray{
+    color: gray;
+}
+.text-small{font-size: 0.7em}
+.text-left{
+    text-align: left !important;
+}
+.text-right{
+    text-align: right !important;
+}
+.text-center{
+    text-align: center !important;
+}
+.list{
+
+}
+.list li{
+   list-style: circle;
+   line-height: 26px;
+   font-size: 12px;
+}
+.list a{
+    color: #666;
+}
+.list a:hover{
+    color: #111;
+}
+.user-info{
+ font-size:12px;
+ color:#333;
+}
+.user-info > dt ,.user-info > dd{
+    margin-bottom: 5px;
+}
+.user-info {
+    padding-left:100px; 
+    font-size: 12px;
+}
+.user-info > dt{
+    width: 90px;
+    margin-left: -100px;
+    float: left;
+    text-align: right;
+    margin-right: 10px;
+    background: ;
+    font-weight: bold;
+}
+.user-info > dd{
+    width: 100%;
+    background: ;
+}
+
+.edit_baoming input{
+    margin-bottom: 15px;
+    width: 200px;
+    display: block;
+}
+input.disabled{
+    border:none;
+}
+
+.detail-h1{font-size: 28px;}
