@@ -1,0 +1,48 @@
+.news{
+
+  h4{
+    span{
+      color:#888;
+    }
+
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  .news-item.media {
+
+    display: block;
+    height: 40px;
+    border-bottom: 1px solid @gray-lighter;
+
+    .media-body {
+      color: @gray-light;
+
+      .media-heading {
+        color: @gray;
+
+        &:hover {
+          color: @gray-darker;
+        }
+
+        &> small {
+          float: right;
+          margin-top: 6px;
+        }
+      }
+    }
+
+    &:last-child {
+      margin-bottom: 15px;
+    }
+  }
+
+  .imgbox{
+    height: 260px;
+    margin-bottom: 15px;
+  }
+
+
+}

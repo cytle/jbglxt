@@ -43,7 +43,8 @@ watchers = [
   {
     paths: [
       paths.less + 'style.less',
-      paths.less + 'style/*.less'],
+      paths.less + 'style/*.less',
+      paths.less + 'style/*/*.less'],
     executor: function () {
       return less2css([paths.less + 'style.less']);
     }

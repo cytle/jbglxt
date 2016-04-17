@@ -19,7 +19,7 @@ class IndexController extends HomeController {
 	//系统首页
 	public function index(){
 		$where=array('status'=>1);
-		$field=array('title','jb_document_huiyi.id','xingming','open_time','address');
+		$field=array('title','jb_document_huiyi.id','jiabin_name','open_time','address', 'content');
 		$M=M('document_huiyi');
 		$data=$M->join('__DOCUMENT__ document on document.id=__DOCUMENT_HUIYI__.id')
 		->where($where)

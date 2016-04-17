@@ -1,7 +1,6 @@
 
 .slider {
     width: 100%;
-
     overflow: hidden;
     position: relative;
     .slider-list {
@@ -11,17 +10,39 @@
         position: absolute;
         top: 0;
         left: 0;
+
+
+        &:before {
+            content: "";
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(66, 66, 66, 0.4);
+        }
+
         .slider-item {
 
             text-align: center;
-            font-size: 50px;
             display: block;
             float: left;
             width: 100%;
             height: 100%;
 
+            background-repeat: no-repeat;
+            background-size: 100% auto;
+            background-origin: center;
+            background-size: cover;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            -ms-background-size: cover;
+
         }
     }
+
+
 
     .slider-pages {
         position: absolute;
@@ -36,9 +57,9 @@
 
         & > li {
             display: inline-block;
-            width: 10px;
+            width: 18px;
             height: 10px;
-            margin: 1px 4px;
+            margin: 1px 10px;
             text-indent: -999px;
             cursor: pointer;
             background-color: #000\9;
@@ -47,9 +68,10 @@
             border-radius: 10px;
 
             &.active {
-                width: 12px;
+                width: 20px;
                 height: 12px;
-                margin: 0;
+                margin: 0px 10px;
+
                 background-color: #fff;
 
             }

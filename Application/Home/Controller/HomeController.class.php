@@ -16,26 +16,50 @@ use Think\Controller;
  */
 class HomeController extends Controller {
 
-	/* 空操作，用于输出404页面 */
-	public function _empty(){
-		$this->redirect('Index/index');
-	}
+    /* 空操作，用于输出404页面 */
+    public function _empty(){
+        $this->redirect('Index/index');
+    }
 
 
-	protected function _initialize(){
-		/* 读取站点配置 */
-		$config = api('Config/lists');
-		C($config); //添加配置
+    protected function _initialize(){
+        /* 读取站点配置 */
+        $config = api('Config/lists');
+        C($config); //添加配置
 
-		if(!C('WEB_SITE_CLOSE')){
-			$this->error('站点已经关闭，请稍后访问~');
-		}
-	}
+        if(!C('WEB_SITE_CLOSE')){
+            $this->error('站点已经关闭，请稍后访问~');
+        }
 
-	/* 用户登录检测 */
-	protected function login(){
-		/* 用户登录检测 */
-		is_login() || $this->error('您还没有登录，请先登录！', U('User/login'));
-	}
+        $this->header();
+    }
+
+    protected function header () {
+        $where = array(
+            'status' => 1,
+            'model_id' => 7,
+            'category_id' => 47
+            );
+        $fields = [
+            'id',
+            'title',
+            'name'
+        ];
+
+        $data = M('document')
+            ->where($where)
+            ->order('level')
+            ->getField('id, title, name');
+
+        $this->assign('header_luntans', $data);
+
+        return $this;
+    }
+
+    /* 用户登录检测 */
+    protected function login(){
+        /* 用户登录检测 */
+        is_login() || $this->error('您还没有登录，请先登录！', U('User/login'));
+    }
 
 }

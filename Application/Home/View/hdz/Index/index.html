@@ -1,74 +1,73 @@
 <extend name="Base/common"/>
 <block name="body">
 
+  <section class="slider banner">
+    <div class="slider-list">
 
-    <div class="bannerbox " style="background-image:url(__IMG__/banner.png)">
+      <think:article name="Huiyi" cate="47" pos="4" model_id="4" >
+      <php>
+        $jiabin = get_jiabin($article['jiabin_id']);
+      </php>
 
-    </div>
-
-    <div class="project">
-        <div class="container">
-            <div class="row">
-                <volist name="huiyis" length="4" id="huiyi" offset="0">
-                    <div class="col-3">
-                        <a href="{:U('Article/detail?id='.$huiyi['id'])}">
-                            <div class="probox">
-                                <div class="probox-cover"><img src="__IMG__/icon1.png"></div>
-                                <div class="probox-title lead">
-                                    {$huiyi.title}
-                                </div>
-                                <div class="probox-content">
-                                    <dl class="user-info" >
-                                        <dt>会议主讲人</dt> <dd>{$huiyi.xingming}</dd>
-                                        <dt>会议开始时间</dt> <dd>{$huiyi.open_time|date='Y-m-d H:i:s',###}</dd>
-                                        <dt>会议地址</dt> <dd>{$huiyi.address}</dd>
-                                    </dl>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </volist>
-                <div class="clearbox"></div>
+      <div class="slider-item" data-cover="{$article.cover_id|get_cover='path'}">
+        <div class="banner-box row">
+          <div class=" banner-top col-md-12">
+            <div class="banner-top-content">
+              <h2>“互联网+”创新方向和重点</h2>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. </p>
             </div>
-            <div class="prodown ">
-                <h2>热门会议</h2>
-                <dl>
-                    <volist name="huiyis" id="huiyi" offset="4">
-                     <dd><a href="{:U('Article/detail?id='.$huiyi['id'])}">{$huiyi.title}</a></dd>
 
-                 </volist>
-             </dl>
-         </div>
+          </div>
 
-     </div>
- </div>
+          <div class="banner-middle col-md-12">
+
+            <div class="banner-middle-left">
+              <a href="{:U('Article/detail?id='.$article['id'])}">
+                <h2>{$article.title}</h2>
+              </a>
+              <p class="text-left">{$article.description}</p>
+            </div>
+
+            <div class="banner-middle-right">
+              <a href="{:U('Article/detail?id='.$jiabin['id'])}">
+              <div class="photobox">
+                  <img src="{$jiabin.cover_id|get_cover='path'}" class="">
+                  </div>
+                <h6> {$jiabin.title}</h6>
+              </a>
+              <p>{$jiabin.job_title}</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </think:article>
+  </div>
+</section>
 
 
- <script>
 
-/*
-var t=setInterval(function(){
-    $(".showbox dl").animate({marginTop:-30},1000,function(){
-        $(".showbox dd:last").after($(".showbox dd:first"));
-        $(".showbox dl").css({marginTop:0});
-    })
-},2000)
+<include file="Sections/hot_news" />
+<include file="Sections/recommend_guest" />
 
-$(".showbox").mouseenter(
-    function(){
-        clearInterval(t);
-    }
-).mouseleave(
-    function(){
-        t=setInterval(function(){
-            $(".showbox dl").animate({marginTop:-30},1000,function(){
-                $(".showbox dd:last").after($(".showbox dd:first"));
-                $(".showbox dl").css({marginTop:0});
-            })
-        
-        },2000) 
-    }
-)
-*/
-</script>
+
+<include file="Sections/hot_forums" />
+
+</block>
+
+<block name="script">
+  <script src="__JS__/lib/slider.js"></script>
+  <script>
+
+    $(function () {
+      "use strict";
+      // 使用
+      $('.slider').slider({
+        delayTime: 8000
+      });
+
+    });
+  </script>
+
 </block>

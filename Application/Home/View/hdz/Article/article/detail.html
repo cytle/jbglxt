@@ -1,0 +1,67 @@
+<extend name="Base/common"/>
+
+<block name="body">
+  <section class="section-block detail-introduce">
+
+    <div class="container">
+      <div class="row">
+
+        <div class="col-md-9">
+          <h2>{$article.title}</h2>
+          <div class="text-right">
+            作者: {$article.uid|get_username} &nbsp;&nbsp;
+            更新时间: {$article.update_time|date='Y年m月d日 H:i',###} &nbsp;&nbsp;
+            浏览次数: {$article.view} 次
+
+          </div>
+          <br>
+
+          {$article.content}
+
+        </div>
+
+
+        <div class="simple-list col-md-3">
+          <h3 class="list-heading">论坛 <small>FORUM</small></h3>
+          <ul>
+            <li><a href="#">智慧城市发展高峰论坛</a></li>
+            <li><a href="#">智慧健康高层论坛</a></li>
+            <li><a href="#">全国智慧教育高层论坛</a></li>
+            <li><a href="#">第三届智慧城市建设创新交流大会</a></li>
+            <li><a href="#">中国（宁波）创客创业大赛决赛</a></li>
+            <li><a href="#">健康类智能可穿戴设备国际论坛</a></li>
+            <li><a href="#">物联网智能化应用与服务高层论坛</a></li>
+            <li><a href="#">数字文化产业发展高层论坛</a></li>
+            <li><a href="#">甬澳港台青年华商创业创新合作论坛</a></li>
+            <li><a href="#">智能制造2025高层论坛</a></li>
+            <li><a href="#">两岸物联网与智慧服务产业发展论坛</a></li>
+            <li><a href="#">智慧园区发展论坛</a></li>
+          </ul>
+
+          <h3 class="list-heading">新闻 <small>NEWS</small></h3>
+          <ul>
+            <li><a href="#">智慧城市发展高峰论坛</a></li>
+            <li><a href="#">智慧健康高层论坛</a></li>
+            <li><a href="#">全国智慧教育高层论坛</a></li>
+            <li><a href="#">第三届智慧城市建设创新交流大会</a></li>
+            <li><a href="#">中国（宁波）创客创业大赛决赛</a></li>
+            <li><a href="#">健康类智能可穿戴设备国际论坛</a></li>
+            <li><a href="#">物联网智能化应用与服务高层论坛</a></li>
+            <li><a href="#">数字文化产业发展高层论坛</a></li>
+            <li><a href="#">甬澳港台青年华商创业创新合作论坛</a></li>
+            <li><a href="#">智能制造2025高层论坛</a></li>
+            <li><a href="#">两岸物联网与智慧服务产业发展论坛</a></li>
+            <li><a href="#">智慧园区发展论坛</a></li>
+          </ul>
+
+        </div>
+      </div>
+    </div>
+  </section>
+  <include file="Sections/hot_news" />
+
+  <include file="Sections/hot_forums" />
+
+
+
+</block>

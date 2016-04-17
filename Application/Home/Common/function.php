@@ -61,10 +61,23 @@ function get_nav_url($url){
     switch ($url) {
         case 'http://' === substr($url, 0, 7):
         case '#' === substr($url, 0, 1):
-            break;        
+            break;
         default:
             $url = U($url);
             break;
     }
     return $url;
+}
+
+
+function get_jiabin($id) {
+
+
+    return M('document_jiabin')
+    ->alias('jiabin')
+    ->join('__DOCUMENT__ document on document.id = jiabin.id ')
+    ->where(['jiabin.id' => $id, 'document.status' => '1'])
+    ->find();
+
+
 }

@@ -82,7 +82,7 @@ class ArticleController extends HomeController {
 
 		/* 模板赋值并渲染模板 */
 		$this->assign('category', $category);
-		$this->assign('info', $info);
+		$this->assign('article', $info);
 		$this->assign('page', $p); //页码
 		$this->display($tmpl);
 	}

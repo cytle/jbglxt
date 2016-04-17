@@ -1,0 +1,74 @@
+
+<!--guest-->
+<section class="guest section-block">
+  <div class="container">
+
+    <h2>嘉宾推荐 <small>Guest</small><!--  <a href="#" class="btn btn-default btn-sm">查看更多</a> --></h2>
+
+    <think:article name="Jiabin" cate="46" model_id="8" limit="3"></think:article>
+    <php>$article = $_result[1];</php>
+
+    <div class="row">
+      <div class="col-md-5">
+
+        <div class="media">
+          <div class="media-left">
+            <div class="change-imgbox img-overflow-width img-rounded">
+              <img class="media-object" src="{$article.cover_id|get_cover='path'}" alt="...">
+            </div>
+          </div>
+          <div class="media-body">
+            <h4 class="media-heading">{$article.title}</h4>
+            <h6>{$article.job_title}</h6>
+            <p>{$article.description}</p>
+          </div>
+        </div>
+
+      </div>
+      <div class="col-md-7">
+
+        <div class="media-list">
+
+          <div class="media">
+          <php>$article = $_result[0];</php>
+
+            <div class="media-left">
+              <div class="sm-img-overflow img-rounded">
+                <img class="media-object" src="{$article.cover_id|get_cover='path'}" alt="...">
+              </div>
+            </div>
+            <div class="media-body">
+              <h4 class="media-heading">{$article.title}</h4>
+              <h6>{$article.job_title}</h6>
+              <p>{$article.description}</p>
+            </div>
+          </div>
+          <div class="media">
+            <php>$article = $_result[2];</php>
+
+            <div class="media-left hidden-md hidden-lg">
+
+              <div class="sm-img-overflow img-rounded">
+                <img class="media-object" src="{$article.cover_id|get_cover='path'}" alt="...">
+              </div>
+            </div>
+            <div class="media-body">
+              <h4 class="media-heading">{$article.title}</h4>
+              <h6>{$article.job_title}</h6>
+              <p>{$article.description}</p>
+            </div>
+
+            <div class="media-right hidden-xs hidden-sm">
+
+              <div class="sm-img-overflow img-rounded">
+                <img class="media-object" src="{$article.cover_id|get_cover='path'}" alt="...">
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+<!--//guest-->
