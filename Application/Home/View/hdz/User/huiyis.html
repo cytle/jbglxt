@@ -1,0 +1,13 @@
+<extend name="Base/user"/>
+
+
+<block name="content">
+
+	<p class="lead">已报名会议</p>
+	<hr>
+	<ul class="list">
+		<foreach name="data" item="huiyi"> 
+			<li><a href="{:U('User/huiyi?id='.$huiyi['id'])}">{$huiyi.title}</a><span style="float:right">[{$huiyi.name},{$huiyi.create_time|date='Y-m-d H:i:s',###}]</span></li>
+		</foreach>
+	</ul>
+</block>

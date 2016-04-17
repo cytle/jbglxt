@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <include file="Public/head"/>
+</head>
+<body>
+  <div class="bgbox">
+    <div class="container">
+      <div class="login ">
+        <div class="boxlogo"><a href="{:U('Index/index')}"><img src="__IMG__/loginlogo1.png"></a></div>
+        <div class="loginbox">
+          <h1>在这里，连接世界</h1>
+          <h2>立即登录</h2>
+
+          <form action="__SELF__" method="post">
+            <dl>
+              <dt>手机</dt>
+              <dd>
+                <input type="text" value="" placeholder="手机" name="mobile">
+              </dd>
+              <dt>密码</dt>
+              <dd>
+                <input type="password" value="" placeholder="请输入密码"  name="password">
+              </dd>
+            </dl>
+
+            <p class="gray text-small text-left">* 点击“登录”，即代表您同意宁波智博会的《用户协议》、《隐私政策》和《Cookie政策》。</p>
+            <div class="text-center">
+            <button type="submit" class="btn joinBtn">登录</button>
+            </div>
+          </form>
+        </div>
+        <p>还没有账号？<a href="{:U('User/register')}">免费注册</a></p>
+      </div>
+    </div>
+  </div>
+
+  <include file="Public/footer"/>
+
+</body>
+</html>

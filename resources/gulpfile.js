@@ -51,6 +51,14 @@ watchers = [
       return less2css([paths.less + 'vendor.less']);
     }
   },
+  {
+    paths: [
+      rootPath + 'html/*'],
+    executor: function (event) {
+      gulp.src(event.path)
+        .pipe(livereload());
+    }
+  },
 ];
 
 
@@ -105,7 +113,7 @@ gulp.task('less', function () {
 //监听less文件改动  自动编译成css
 gulp.task('watch', ['init'], function() {
   livereload.listen({
-    quiet: true
+    // quiet: true
   });
 
   gulp.start('less', 'server');

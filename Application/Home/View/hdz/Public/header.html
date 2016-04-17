@@ -1,0 +1,48 @@
+
+<div class="headerbg overflow ">
+    <div class="headerbox container">
+        <div class="logo">
+            <img src="__IMG__/logo1.png" alt="第五届中国（宁波）国际智慧城市建设与发展博览会">
+        </div>
+    </div>
+</div>
+
+<div class="navbg">
+    <div class="navbox container overflow">
+
+        <a class="choose" href="{:U('Index/index')}">首页</a>
+        <a href="">展会概述</a>
+        <a href="">展商服务</a>
+        <a href="">加入我们</a>
+        <a href="">联系我们</a>
+
+        <div style="float:right">
+            <if condition="is_login()">
+                <a href="{:U('User/my')}">{:get_username()}</a>
+                <a href="{:U('User/logout')}">退出</a>
+                <else/>
+                <a href="{:U('User/login')}">登录</a>
+                <a href="{:U('User/register')}">注册</a>
+            </if>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+
+    $(function () {
+
+        //导航固定
+        $(document).scroll(
+            function(){
+                toppos=$(this).scrollTop();
+                if(toppos>100){
+                    $(".navbg").addClass("topnavbox");
+                }else{
+                    $(".navbg").removeClass("topnavbox");
+                }
+            }
+
+            )
+
+    })
+</script>

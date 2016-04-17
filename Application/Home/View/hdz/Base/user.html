@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<include file="Public/head"/>
+</head>
+
+<body class="index-body">
+
+	<include file="Public/header"/>
+	<extend name="Base/common"/>
+
+
+	<section id="contents">
+		<div class="container">
+
+			<div class="row   detail-box">
+				<div class="col-12 " >
+					<div style="float:left;width:100%;">
+						<div style="margin-left:200px;margin-right:200px;min-height:400px;">
+
+							<block name="content">
+							</block>
+						</div>
+					</div>
+
+					<block name="left">
+						<div style="width:200px;margin-left:-100%;float:left;">
+							<br>
+							<ul class="list">
+								<li><a href="{:U('User/huiyi')}">已报名会议</a></li>
+								<li><a href="{:U('User/my')}">个人信息</a></li>
+								<li><a href="">修改密码</a></li>
+								<li><a href="{:U('User/logout')}">退出</a></li>
+							</ul>
+						</div>
+					</block>
+
+					<block name="right">
+						<div style="width:200px;margin-left:-200px;float:left;">right</div>
+					</block>
+				</div>
+			</div>
+
+		</div>
+	</section>
+
+	<include file="Public/footer"/>
+</body>
+</html>

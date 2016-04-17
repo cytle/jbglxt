@@ -1,0 +1,98 @@
+<extend name="Base/common"/>
+
+
+<block name="body">
+	<section id="contents">
+		<div class="container">
+			<div class="row detail-box">
+				<div class="col-12 ">
+
+					<h1 class="detail-h1">{$info.title}</h1> 
+					<hr>
+					<p class="lead">会议简介</p>
+					<p>{$info.jianjie}</p>
+				</div>
+
+				<div class="col-6">
+
+					<p class="lead">会议主讲人</p>
+					<p>{$info.xingming}</p>
+					<p class="lead">会议开始时间</p>
+					<p>{$info.open_time|date='Y-m-d H:i',###}</p>
+				</div>
+				<div class="col-6">
+
+					<p class="lead">会议地址</p>
+					<p>{$info.address}</p>
+					<p class="lead">联系方式</p>
+					<p>{$info.lianxifangshi}</p>
+				</div>
+
+				<div class="clearbox"></div>
+				<div class="col-6">
+					<p class="lead">报名参加</p>
+
+					<if condition="is_login()">
+
+						<form action="__MODULE__/User/baoming" method="post">
+							<p class="gray text-small">
+								* 点击“立即报名”，即代表您同意宁波智博会的《用户协议》、《隐私政策》和《Cookie政策》。
+							</p>
+							<p>
+								当前用户为 {:get_username()}
+							</p>
+							<p>
+								手机号码为 {:session('user_auth.mobile')}
+							</p>
+							<input type="hidden" name="huiyi_id" value="{$info.id}" />
+							<input type="hidden" name="name" value="{:get_username()}" />
+							<input type="hidden" name="mobile" value="{:session('user_auth.mobile')}" />
+							<button type="submit" class="btn">确认报名</button>
+						</form>
+						<div id="baoming" style="">
+							<span style="position:relative;top:10px;background:#FFF;padding:0px 10px;">代报名</span>
+						</div>
+
+						<div id="baomingf">
+							<form action="__MODULE__/User/baoming" method="post">
+								<input type="hidden" name="huiyi_id" value="{$info.id}" />
+								<label class="control-label" for="inputName">姓名</label>
+								<input type="text" id="inputName" name="name" placeholder="姓名">
+								<label class="control-label" for="inputMobile">手机号码</label>
+								<input type="text" id="inputMobile" name="mobile" placeholder="手机号码">
+								<button type="submit" class="btn">立即报名</button>
+							</form>
+
+						</div>
+						<p class="gray text-small">
+							* 点击“立即报名”，即代表您同意宁波智博会的《用户协议》、《隐私政策》和《Cookie政策》。
+						</p>
+						<else/>
+						<a href="{:U('User/login')}">登录</a>
+						<a href="{:U('User/register')}">注册</a>
+					</if>
+				</div>
+
+				<div class="col-6">
+
+
+					<div class="prodown ">
+						<p class="lead">热门会议推荐</p>
+						<dl>
+							<article:list name="article" category="41" child="true">
+							<dd><a href="{:U('Article/detail?id='.$article['id'])}">{$article.title}</a></dd>
+						</article:list>
+					</dl>
+				</div>
+			</div>
+			<div class="clearbox"></div>
+
+			<div class="col-12 ">
+
+				<hr>
+
+			</div>
+		</div>
+	</div>
+</section>
+</block>

@@ -1,0 +1,74 @@
+<extend name="Base/common"/>
+<block name="body">
+
+
+    <div class="bannerbox " style="background-image:url(__IMG__/banner.png)">
+
+    </div>
+
+    <div class="project">
+        <div class="container">
+            <div class="row">
+                <volist name="huiyis" length="4" id="huiyi" offset="0">
+                    <div class="col-3">
+                        <a href="{:U('Article/detail?id='.$huiyi['id'])}">
+                            <div class="probox">
+                                <div class="probox-cover"><img src="__IMG__/icon1.png"></div>
+                                <div class="probox-title lead">
+                                    {$huiyi.title}
+                                </div>
+                                <div class="probox-content">
+                                    <dl class="user-info" >
+                                        <dt>会议主讲人</dt> <dd>{$huiyi.xingming}</dd>
+                                        <dt>会议开始时间</dt> <dd>{$huiyi.open_time|date='Y-m-d H:i:s',###}</dd>
+                                        <dt>会议地址</dt> <dd>{$huiyi.address}</dd>
+                                    </dl>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </volist>
+                <div class="clearbox"></div>
+            </div>
+            <div class="prodown ">
+                <h2>热门会议</h2>
+                <dl>
+                    <volist name="huiyis" id="huiyi" offset="4">
+                     <dd><a href="{:U('Article/detail?id='.$huiyi['id'])}">{$huiyi.title}</a></dd>
+
+                 </volist>
+             </dl>
+         </div>
+
+     </div>
+ </div>
+
+
+ <script>
+
+/*
+var t=setInterval(function(){
+    $(".showbox dl").animate({marginTop:-30},1000,function(){
+        $(".showbox dd:last").after($(".showbox dd:first"));
+        $(".showbox dl").css({marginTop:0});
+    })
+},2000)
+
+$(".showbox").mouseenter(
+    function(){
+        clearInterval(t);
+    }
+).mouseleave(
+    function(){
+        t=setInterval(function(){
+            $(".showbox dl").animate({marginTop:-30},1000,function(){
+                $(".showbox dd:last").after($(".showbox dd:first"));
+                $(".showbox dl").css({marginTop:0});
+            })
+        
+        },2000) 
+    }
+)
+*/
+</script>
+</block>

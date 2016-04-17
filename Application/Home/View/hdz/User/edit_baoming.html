@@ -1,0 +1,25 @@
+<extend name="Base/user"/>
+
+
+<block name="content">
+
+	<p class="lead">{$data.title} <small class="gray text-small ">已报名会议</small></p>
+	<hr>
+
+	<p class="lead">报名信息</p>
+	<div class="edit_baoming">
+		<label class="control-label" >会议 <small  class="gray text-small ">暂不可修改</small></label>
+		<p>{$data.title}</p>
+		<form action="__MODULE__/User/edit_baoming" method="post">
+			<input type="hidden" name="id" value="{$data.id}" />
+			<label class="control-label" for="inputName">姓名</label>
+			<input type="text" id="inputName" name="name" placeholder="姓名" value="{$data.name}" >
+			<label class="control-label" for="inputMobile">手机号码</label>
+			<input type="text" id="inputMobile" name="mobile" placeholder="手机号码" value="{$data.mobile}" >
+			<button type="submit" class="btn">修改报名信息</button>
+		</form>
+	</div>
+	<hr>
+
+	
+</block>
