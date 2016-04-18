@@ -13,7 +13,10 @@
 
         <div class="media">
           <div class="media-left">
-            <div class="change-imgbox img-overflow-width img-rounded">
+            <div class="change-imgbox hidden-xs hidden-sm img-overflow-width img-rounded">
+              <img class="media-object" src="{$article.cover_id|get_cover='path'}" alt="...">
+            </div>
+            <div class="sm-img-overflow hidden-md hidden-lg img-rounded">
               <img class="media-object" src="{$article.cover_id|get_cover='path'}" alt="...">
             </div>
           </div>
@@ -22,6 +25,7 @@
             <h6>{$article.job_title}</h6>
             <p>{$article.description}</p>
           </div>
+
         </div>
 
       </div>

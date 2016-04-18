@@ -1,7 +1,7 @@
 <extend name="Base/common"/>
 
 <block name="body">
-          <php > $now_time = NOW_TIME;</php>
+  <php > $now_time = NOW_TIME;</php>
 
   <section class="section-block maincontent">
 
@@ -11,12 +11,13 @@
         <div class="maincontent-detail col-md-9">
           <h2>{$article.title}</h2>
           <blockquote>
-          <p><b>简介：</b>{$article.description|default="无"}</p>
+            <p><b>简介：</b>{$article.description|default="无"}</p>
           </blockquote>
 
           <div class="maincontent-content">
             {$article.content}
           </div>
+          <hr>
         </div>
 
         <div class="maincontent-apply col-md-3">
@@ -77,27 +78,27 @@
             <h4 class="modal-title" id="selfApplyModalLabel">会议报名</h4>
           </div>
           <div class="modal-body">
-            <dl class="dl-horizontal">
-              <dt>名字:</dt>
-              <dd>123123</dd>
-              <dt>联系方式:</dt>
-              <dd>213123213</dd>
-
-            </dl>
             <form>
               <div class="form-group">
-                <label for="recipient-name" class="control-label">名字:</label>
-                123123
+                <label for="applyName" class="control-label">名字:</label>
+                <input type="text" id="applyName" class="form-control" value="姚飞天" readonly="readonly">
               </div>
               <div class="form-group">
-                <label for="message-text" class="control-label">联系方式:</label>
-                213123213
+                <label for="phone" class="control-label">联系方式:</label>
+                <input type="text" id="phone" class="form-control" value="13412345678" readonly="readonly">
               </div>
             </form>
+            <p class="text-danger">* 请确认报名信息</p>
+
+
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#otherApplyModal">代报名</button>
+            <div class="checkbox pull-left">
+              <label>
+                <input type="checkbox"> 我已了解 <a href="#">报名说明</a>
+              </label>
+            </div>
+            <button type="button" class="btn btn-default" data-dismiss="modal" data-toggle="modal" data-target="#otherApplyModal">代报名</button>
             <button type="button" class="btn btn-primary">报名</button>
           </div>
         </div>
@@ -110,7 +111,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="selfApplyModalLabel">会议报名</h4>
+            <h4 class="modal-title" id="selfApplyModalLabel">会议代报名</h4>
           </div>
           <div class="modal-body">
             <form>
@@ -125,7 +126,12 @@
             </form>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+            <div class="checkbox pull-left">
+              <label>
+                <input type="checkbox"> 我已了解 <a href="#">报名说明</a>
+              </label>
+            </div>
             <button type="button" class="btn btn-primary">报名</button>
           </div>
         </div>
@@ -134,9 +140,9 @@
   </egt>
 
 
-<include file="Sections/hot_news" />
+  <include file="Sections/hot_news" />
 
-<include file="Sections/hot_forums" />
+  <include file="Sections/hot_forums" />
 
 
 
