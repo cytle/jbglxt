@@ -99,7 +99,7 @@
             });
 
             //placeholder兼容性
-                //如果支持 
+                //如果支持
             function isPlaceholer(){
                 var input = document.createElement('input');
                 return "placeholder" in input;
@@ -112,17 +112,17 @@
                 $("#itemBox input").keydown(function(){
                     $(this).parents(".item").next(".placeholder_copy").css({
                         display:'none'
-                    })                    
+                    })
                 })
                 $("#itemBox input").blur(function(){
                     if($(this).val()==""){
                         $(this).parents(".item").next(".placeholder_copy").css({
                             display:'block'
-                        })                      
+                        })
                     }
                 })
-                
-                
+
+
             }
 		});
     </script>

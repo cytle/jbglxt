@@ -1,41 +1,164 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-  <include file="Public/head"/>
-</head>
-<body>
-  <div class="bgbox">
+<extend name="Base/common"/>
+
+<block name="body">
+  <section class="login-box">
     <div class="container">
-      <div class="login ">
-        <div class="boxlogo"><a href="{:U('Index/index')}"><img src="__IMG__/loginlogo1.png"></a></div>
-        <div class="loginbox">
-          <h1>在这里，连接世界</h1>
-          <h2>立即登录</h2>
+      <div class="center-block" style="width: 360px;">
+        <h2>用户登录</h2>
+        <div class="login overflow">
 
-          <form action="__SELF__" method="post">
-            <dl>
-              <dt>手机</dt>
-              <dd>
-                <input type="text" value="" placeholder="手机" name="mobile">
-              </dd>
-              <dt>密码</dt>
-              <dd>
-                <input type="password" value="" placeholder="请输入密码"  name="password">
-              </dd>
-            </dl>
 
-            <p class="gray text-small text-left">* 点击“登录”，即代表您同意宁波智博会的《用户协议》、《隐私政策》和《Cookie政策》。</p>
-            <div class="text-center">
-            <button type="submit" class="btn joinBtn">登录</button>
+          <div class="alert hidden" role="alert" id="alterMsg">
+          </div>
+          <form action="__SELF__" method="post" id="loginForm">
+
+            <div class="form-group">
+              <div class="users input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                <input type="text" name="mobile" class="form-control" placeholder="请输入手机" maxlength="11">
+              </div>
+              <label class="control-label hidden">请输入正确的手机号码</label>
+
             </div>
+
+            <div class="form-group">
+
+              <div class="keys input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                <input type="password" name="password" class="form-control" placeholder="请输入密码">
+              </div>
+              <label class="control-label hidden">请输入正确的密码</label>
+
+            </div>
+
+            <p class="text-muted small text-left"><span class="text-danger">*</span> 点击“登录”，即代表您同意宁波智博会的《用户协议》、《隐私政策》和《Cookie政策》。</p>
+
+            <div class="form-group">
+
+              <button class="btn btn-default btn-block" type="submit">登录</button>
+            </div>
+            <p>还没有账号？<a href="{:U('User/register')}">免费注册</a></p>
+
           </form>
+
         </div>
-        <p>还没有账号？<a href="{:U('User/register')}">免费注册</a></p>
+
       </div>
     </div>
-  </div>
 
-  <include file="Public/footer"/>
+  </section>
+</block>
 
-</body>
-</html>
+
+<block name="script">
+  <script src="__JS__/until.js"></script>
+  <script>
+
+    $(function () {
+      "use strict";
+
+      $('#loginForm')
+      .submit(function () {
+
+        var $this = $(this);
+        var $mobile = $this.find('input[name="mobile"]'),
+            $password = $this.find('input[name="password"]'),
+            isError = false;
+
+
+        // 验证mobile是否电话号码
+        if (isMobile($mobile.val())) {
+
+          successInput($mobile);
+
+        } else {
+
+          errorInput($mobile);
+          isError = true;
+
+        }
+
+        // 验证password是否符合
+        if (isPassword($password.val())) {
+
+          successInput($password);
+
+        } else {
+
+          errorInput($password);
+          isError = true;
+
+        }
+
+        if (! isError) {
+
+          // ajax 提交表单
+          $.ajax({
+
+              method: "POST",            // 请求的方法
+              url: $this.attr('action'), // 请求路由
+              data: {                    // 表单数据
+                mobile: $mobile.val(),
+                password: $password.val()
+              }
+            })
+            .done(function (data) {
+
+              if (data.status === 1) {
+                successAlert(data.info + " 3秒后转跳！");
+                setTimeout(function () {
+                  location.href = data.url;
+                }, 3000);
+              } else {
+                errorAlert(data.info);
+              }
+            });
+        }
+        return false;
+
+
+      });
+
+      $('input[name="mobile"]')
+      .change(function () {
+        var $this = $(this),
+            value;
+
+        value = $this.val();
+
+        if (isMobile(value)) {
+
+          successInput($this);
+        } else {
+
+          errorInput($this);
+
+        }
+
+      });
+
+      $('input[name="password"]')
+      .change(function () {
+        var $this = $(this),
+            value;
+
+        value = $this.val();
+
+        if (isPassword(value)) {
+
+          successInput($this);
+        } else {
+
+          errorInput($this);
+
+        }
+
+      });
+
+
+
+
+
+    });
+  </script>
+</block>
