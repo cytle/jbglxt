@@ -15,6 +15,12 @@ function isPassword (value) {
 }
 
 
+function isUsername (value) {
+
+  return value.length > 0;
+}
+
+
 // 成功input
 function successInput ($obj) {
   $obj
