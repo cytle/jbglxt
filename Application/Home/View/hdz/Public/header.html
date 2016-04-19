@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default" id="headerNav">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -18,14 +18,16 @@
 
       <form class="navbar-form navbar-right" role="search">
 
-        <div class="input-group">
+        <button class="btn btn-default" type="button" id="showSearchInputBtn"><i class="glyphicon glyphicon-search"></i></button>
+
+        <div class="input-group" id="headerSearchInput">
           <input type="text" class="form-control " placeholder="搜索...">
           <span class="input-group-btn">
             <button class="btn btn-default" type="button"><i class="glyphicon glyphicon-search"></i></button>
           </span>
-        </div><!-- /input-group -->
+        </div>
       </form>
-      <ul class="nav navbar-nav navbar-right">
+      <ul class="nav navbar-nav navbar-right" id="headerMenu">
         <think:nav name="nav">
           <eq name="nav.pid" value="0">
 
@@ -52,6 +54,21 @@
           </eq>
         </think:nav>
 
+
+
+        <if condition="is_login()">
+          <li class="dropdown">
+            <a href="{:U('User/my')}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{:get_username()} <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+
+              <li><a href="{:U('User/my')}" class="text-center ">个人中心</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="{:U('User/logout')}" class="text-center ">退出</a></li>
+            </ul>
+          </li>
+          <else/>
+          <li><a href="{:U('User/login')}">登录</a></li>
+        </if>
         <!-- <li class="active"><a href="#">智博会官网<span class="sr-only">(current)</span></a></li> -->
 
 

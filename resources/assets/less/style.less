@@ -51,9 +51,33 @@
 
 
 
+@media (min-width: @screen-xs-max) {
 
+  .showSearch {
+    #showSearchInputBtn {
+      display: none;
 
+    }
+    #headerSearchInput {
+      display: inline-table;
+    }
+    #headerMenu {
+      display: none;
+    }
+  }
 
+  #headerSearchInput {
+    display: none;
+
+  }
+}
+
+@media (max-width: @screen-xs-max) {
+  #showSearchInputBtn {
+      display: none;
+
+    }
+}
 
 
 

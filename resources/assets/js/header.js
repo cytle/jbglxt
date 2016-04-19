@@ -13,4 +13,15 @@ $(function () {
       }
     });
 
+  $('#showSearchInputBtn').click(function () {
+    $("#headerNav").addClass('showSearch');
+    $('#headerSearchInput').find('input').focus();
+
+  });
+
+  $('#headerSearchInput input')
+    .blur(function () {
+      $("#headerNav").removeClass('showSearch');
+
+    });
 });
