@@ -34,10 +34,10 @@
             <eq name="nav.title" value="论坛活动">
 
              <li class="dropdown">
-               <a href="{$nav.url|get_nav_url}" target="<eq name='nav.target' value='1'>_blank<else/>_self</eq>" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{$nav.title} <span class="caret"></span></a>
+               <a href="{$nav.url|get_nav_url}"   target="<eq name='nav.target' value='1'>_blank<else/>_self</eq>" class="dropdown-toggle text-center" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{$nav.title} <span class="caret"></span></a>
                 <ul class="dropdown-menu">
                   <foreach name="header_luntans" item="luntan" key="id" >
-                    <li><a href="{:U('Article/detail?id='.$luntan['id'])}">{$luntan.title}</a></li>
+                    <li><a href="{:U('Article/detail?id='.$luntan['id'])}" class="text-center">{$luntan.title}</a></li>
                   </foreach>
 
                   <li role="separator" class="divider"></li>
@@ -48,7 +48,7 @@
             <else/>
 
               <li>
-                <a href="{$nav.url|get_nav_url}" target="<eq name='nav.target' value='1'>_blank<else/>_self</eq>">{$nav.title}</a>
+                <a href="{$nav.url|get_nav_url}" class="text-center" target="<eq name='nav.target' value='1'>_blank<else/>_self</eq>">{$nav.title}</a>
               </li>
             </eq>
           </eq>
@@ -58,7 +58,7 @@
 
         <if condition="is_login()">
           <li class="dropdown">
-            <a href="{:U('User/my')}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{:get_username()} <span class="caret"></span></a>
+            <a href="{:U('User/my')}" class="dropdown-toggle text-center" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{:get_username()} <span class="caret"></span></a>
             <ul class="dropdown-menu">
 
               <li><a href="{:U('User/my')}" class="text-center ">个人中心</a></li>
