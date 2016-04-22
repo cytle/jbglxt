@@ -26,7 +26,7 @@ class UserController extends HomeController {
 	}
 
 	public function huiyi(){
-		
+
 		$uid=is_login();
 		if(!$uid){
 			$this->error('您还没有登录，请先登录！', U('User/login'));
@@ -35,7 +35,7 @@ class UserController extends HomeController {
 		$id=(int)I('id');
 		if($id!==0){
 			$where=array('jb_huiyibaoming.id'=>$id);
-			$field=array('xingming','open_time','address','lianxifangshi','title','jb_huiyibaoming.name','jb_huiyibaoming.create_time','mobile','jb_huiyibaoming.id','huiyi_id');
+			$field=array('jb_huiyibaoming.name','open_time','address','phone','title','jb_huiyibaoming.name','jb_huiyibaoming.create_time','mobile','jb_huiyibaoming.id','huiyi_id');
 			$data=$this->getHuiyi($field,$where);
 			$this->assign('data',empty($data)?$data:$data[0]);
 			$this->display("huiyi");
@@ -45,11 +45,11 @@ class UserController extends HomeController {
 			$this->assign('data',$data);
 			$this->display('huiyis');
 		}
-		
+
 	}
 
 	public function edit_baoming(){
-		
+
 		$uid=is_login();
 		if(!$uid){
 			$this->error('您还没有登录，请先登录！', U('User/login'));
@@ -59,7 +59,7 @@ class UserController extends HomeController {
 			$data=I();
 			$data['uid']=$uid;
 			if($Huiyibaoming->edit_baoming($data)){
-				$this->success('修改报名成功',U('User/huiyi',array('id'=>$data['id'])));
+				$this->success('修改报名成功',U('User/huiyi'));
 			}else{
 				$this->error($Huiyibaoming->getError());
 			}
@@ -70,12 +70,12 @@ class UserController extends HomeController {
 				$this->error('未获取id', U('User/huiyi'));
 			}
 			$where=array('jb_huiyibaoming.id'=>$id);
-			$field=array('xingming','open_time','address','lianxifangshi','title','jb_huiyibaoming.name','jb_huiyibaoming.create_time','mobile','jb_huiyibaoming.id','huiyi_id');
+			$field=array('jb_huiyibaoming.name','open_time','address','phone','title','jb_huiyibaoming.name','jb_huiyibaoming.create_time','mobile','jb_huiyibaoming.id','huiyi_id');
 			$data=$this->getHuiyi($field,$where);
 			$this->assign('data',empty($data)?$data:$data[0]);
 			$this->display();
 		}
-		
+
 	}
 	private function getHuiyi($field,$where){
 		$M=M('Huiyibaoming');
@@ -118,7 +118,7 @@ class UserController extends HomeController {
 			/* 检测密码 */
 			if($password != $repassword){
 				$this->error('密码和重复密码不一致！');
-			}			
+			}
 
 			/* 调用注册接口注册用户 */
 			$User = new UserApi;
@@ -135,7 +135,7 @@ class UserController extends HomeController {
 						$this->success('注册成功！',U('login'));
 					}
 				} else { //登录失败
-					
+
 					$this->success('注册成功！',U('login'));
 				}
 			} else { //注册失败，显示错误信息

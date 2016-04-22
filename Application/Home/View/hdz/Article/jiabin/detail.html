@@ -16,7 +16,14 @@
           </div>
           <br>
 
-          {$article.content}
+              <h6>{$article.job_title}</h6>
+              <hr>
+              <p>
+
+              <img class="pull-left img-thumbnail img-responsive" width="300px" style="margin-right: 15px;margin-bottom: 15px;" src="{$article.cover_id|get_cover='path'}" alt="...">
+              {$article.description}
+
+              </p>
 
         </div>
 

@@ -55,7 +55,6 @@
         </think:nav>
 
 
-
         <if condition="is_login()">
           <li class="dropdown">
             <a href="{:U('User/my')}" class="dropdown-toggle text-center" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{:get_username()} <span class="caret"></span></a>
@@ -67,7 +66,7 @@
             </ul>
           </li>
           <else/>
-          <li><a href="{:U('User/login')}">登录</a></li>
+          <li class="text-center "><a href="{:U('User/login')}">登录</a></li>
         </if>
         <!-- <li class="active"><a href="#">智博会官网<span class="sr-only">(current)</span></a></li> -->
 

@@ -1,49 +1,43 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-	<include file="Public/head"/>
+  <include file="Public/head"/>
 </head>
 
 <body class="index-body">
 
-	<include file="Public/header"/>
-	<extend name="Base/common"/>
+  <include file="Public/header"/>
+  <extend name="Base/common"/>
+
+  <!--check-->
+  <section class="user-block container">
+    <div class="row">
+      <block name="left">
+
+        <div class="welcome-left col-md-3">
+          <h3>欢迎 <small>WELCOME</small></h3>
+          <h4>{:get_username()}</h4>
+          <hr>
+
+          <ul>
+            <li><a href="{:U('User/huiyi')}">已报名会议</a></li>
+            <li><a href="{:U('User/my')}">个人信息</a></li>
+            <li><a href="{:U('User/profile')}">修改密码</a></li>
+            <li><a href="{:U('User/logout')}">退出</a></li>
+          </ul>
+        </div>
+      </block>
+
+      <block name="content">
+
+      </block>
+
+    </div>
+  </section>
+  <!--//check-->
 
 
-	<section id="contents">
-		<div class="container">
 
-			<div class="row   detail-box">
-				<div class="col-12 " >
-					<div style="float:left;width:100%;">
-						<div style="margin-left:200px;margin-right:200px;min-height:400px;">
-
-							<block name="content">
-							</block>
-						</div>
-					</div>
-
-					<block name="left">
-						<div style="width:200px;margin-left:-100%;float:left;">
-							<br>
-							<ul class="list">
-								<li><a href="{:U('User/huiyi')}">已报名会议</a></li>
-								<li><a href="{:U('User/my')}">个人信息</a></li>
-								<li><a href="">修改密码</a></li>
-								<li><a href="{:U('User/logout')}">退出</a></li>
-							</ul>
-						</div>
-					</block>
-
-					<block name="right">
-						<div style="width:200px;margin-left:-200px;float:left;">right</div>
-					</block>
-				</div>
-			</div>
-
-		</div>
-	</section>
-
-	<include file="Public/footer"/>
+  <include file="Public/footer"/>
 </body>
 </html>
