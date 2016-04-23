@@ -10,7 +10,7 @@
 
           <div class="alert hidden" role="alert" id="alterMsg">
           </div>
-          <form action="__SELF__" method="post" id="loginForm">
+          <form action="__SELF__" method="post" id="registerForm">
 
             <div class="form-group">
               <div class="input-group">
@@ -34,9 +34,9 @@
 
               <div class="input-group">
                 <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                <input type="password" name="password" class="form-control" placeholder="请输入密码">
+                <input type="password" name="password" class="form-control" placeholder="请输入密码，至少六位">
               </div>
-              <label class="control-label hidden">请输入正确的密码</label>
+              <label class="control-label hidden">请输入六位或以上密码</label>
 
             </div>
             <div class="form-group">
@@ -75,69 +75,52 @@
     $(function () {
       "use strict";
 
-      $('#loginForm')
+      // 注册表单检查
+      $('#registerForm')
       .submit(function () {
+        // 取消事件冒泡
+        this.preventDefault();
 
         var $this = $(this);
         var $mobile = $this.find('input[name="mobile"]'),
             $username = $this.find('input[name="username"]'),
             $password = $this.find('input[name="password"]'),
             $repassword = $this.find('input[name="repassword"]'),
-            isError = false;
+            isError = false; // 判断是否有不符合要求的值
 
-
+        // 验证用户名是否符合要求
         if (isUsername($username.val())) {
-
           successInput($username);
-
         } else {
-
           errorInput($username);
           isError = true;
-
         }
-
 
         // 验证mobile是否电话号码
         if (isMobile($mobile.val())) {
-
           successInput($mobile);
-
         } else {
-
           errorInput($mobile);
           isError = true;
-
         }
 
         // 验证password是否符合
         if (isPassword($password.val())) {
-
           successInput($password);
-
         } else {
-
           errorInput($password);
           isError = true;
-
         }
-
-
 
         // 验证password是否符合
         if ($password.val() === $repassword.val()) {
-
           successInput($repassword);
-
         } else {
-
           errorInput($repassword);
           isError = true;
-
         }
 
         if (! isError) {
-
           // ajax 提交表单
           $.ajax({
 
@@ -151,9 +134,10 @@
               }
             })
             .done(function (data) {
-
+              // 检查服务端返回结果是否
               if (data.status === 1) {
                 successAlert(data.info + " 3秒后转跳！");
+                // 设置3秒后转跳
                 setTimeout(function () {
                   location.href = data.url;
                 }, 3000);
@@ -162,9 +146,8 @@
               }
             });
         }
+        // 取消原事件
         return false;
-
-
       });
 
       $('input[name="mobile"]')
@@ -222,7 +205,7 @@
 
       });
 
-
+      // 重复密码和密码校验
       $('input[name="repassword"]')
       .change(function () {
         var $this = $(this),

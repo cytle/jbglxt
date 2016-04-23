@@ -11,13 +11,13 @@ function isMobile (value) {
 
 function isPassword (value) {
 
-  return value.length > 0;
+  return value.length >= 6;
 }
 
 
 function isUsername (value) {
 
-  return value.length > 0;
+  return value.length > 1;
 }
 
 
