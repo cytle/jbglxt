@@ -2,16 +2,21 @@
 
 
 <block name="content">
+    <div class="user-right col-md-9">
 
-    <p class="lead">用户信息</p>
-    <hr>
-    <php>
-        $user=session('user_auth');
-    </php>
-    <dl class="user-info" >
-        <dt>序号</dt> <dd>{$user.uid}</dd>
-        <dt>姓名</dt> <dd>{$user.username}</dd>
-        <dt>号码</dt> <dd>{$user.mobile}</dd>
-        <dt>上次登录时间</dt> <dd>{$user.last_login_time}</dd>
-    </dl>
+        <p class="lead">用户信息</p>
+        <hr>
+        <php>
+            $user=session('user_auth');
+        </php>
+
+        <dl class="dl-horizontal">
+            <dt>序号</dt> <dd>{$user.uid}</dd>
+            <dt>姓名</dt> <dd>{$user.username}</dd>
+            <dt>号码</dt> <dd>{$user.mobile}</dd>
+            <dt>上次登录时间</dt> <dd>{$user.last_login_time}</dd>
+        </dl>
+
+    </div>
+
 </block>

@@ -2,12 +2,52 @@
 
 
 <block name="content">
+    <div class="user-right col-md-9">
 
-	<p class="lead">已报名会议</p>
-	<hr>
-	<ul class="list">
-		<foreach name="data" item="huiyi"> 
-			<li><a href="{:U('User/huiyi?id='.$huiyi['id'])}">{$huiyi.title}</a><span style="float:right">[{$huiyi.name},{$huiyi.create_time|date='Y-m-d H:i:s',###}]</span></li>
-		</foreach>
-	</ul>
+        <p class="lead">已报名会议</p>
+        <hr>
+
+        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+           <foreach name="data" item="huiyi">
+
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="heading{$key}">
+                    <h4 class="panel-title">
+                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{$key}" aria-expanded="true" aria-controls="collapse{$key}">
+                            {$huiyi.title}
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapse{$key}" class="panel-collapse collapse <eq name='key' value='0'>in</eq>" role="tabpanel" aria-labelledby="heading{$key}">
+                    <div class="panel-body">
+                        <h4 class="lead">报名信息 <small><a href="{:U('User/edit_baoming?id='.$huiyi['id'])}" class="text-muted">修改</a></small></h4>
+
+                        <dl class="dl-horizontal" >
+                            <dt>序号</dt> <dd>{$huiyi.id}</dd>
+                            <dt>姓名</dt> <dd>{$huiyi.name}</dd>
+                            <dt>号码</dt> <dd>{$huiyi.mobile}</dd>
+                            <dt>报名时间</dt> <dd>{$huiyi.create_time|date='Y-m-d H:i:s',###}</dd>
+                        </dl>
+                        <hr>
+
+                        <h4 class="lead">会议信息 <small><a href="{:U('Article/detail?id='.$huiyi['huiyi_id'])}" class="text-muted">查看更多</a></small></h4>
+
+                        <dl class="dl-horizontal" >
+                            <dt>会议主讲人</dt> <dd>{$huiyi.jiabin_name}</dd>
+                            <dt>会议开始时间</dt> <dd>{$huiyi.open_time|date='Y-m-d H:i:s',###}</dd>
+                            <dt>会议地址</dt> <dd>{$huiyi.address}</dd>
+                            <dt>联系方式</dt> <dd>{$huiyi.phone}</dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </foreach>
+
+    </div>
+</div>
+
+
+
+
+
 </block>

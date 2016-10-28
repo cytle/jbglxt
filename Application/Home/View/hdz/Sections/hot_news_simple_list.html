@@ -1,0 +1,10 @@
+<div class="simple-list">
+    <h3 class="list-heading">新闻 <small>NEWS</small></h3>
+
+    <ul>
+        <think:article name="Article" result="newItem" cate="47" model_id="2" limit="12">
+
+        <li><a href="{:U('Article/detail?id='.$newItem['id'])}">{$newItem.title}</a></li>
+    </think:article>
+</ul>
+</div>

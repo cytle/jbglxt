@@ -13,15 +13,28 @@
 
         <div class="media">
           <div class="media-left">
-            <div class="change-imgbox img-overflow-width img-rounded">
+            <div class="change-imgbox hidden-xs hidden-sm img-overflow-width img-rounded">
+              <img class="media-object" src="{$article.cover_id|get_cover='path'}" alt="...">
+            </div>
+            <div class="sm-img-overflow hidden-md hidden-lg img-rounded">
               <img class="media-object" src="{$article.cover_id|get_cover='path'}" alt="...">
             </div>
           </div>
           <div class="media-body">
-            <h4 class="media-heading">{$article.title}</h4>
+            <h4 class="media-heading">
+              <a href="{:U('Article/detail?id='.$article['id'])}" class="text-muted">
+
+                <a href="{:U('Article/detail?id='.$article['id'])}" class="text-muted">
+                  {$article.title}
+                </a>
+
+              </a>
+            </h4>
             <h6>{$article.job_title}</h6>
+            <hr>
             <p>{$article.description}</p>
           </div>
+
         </div>
 
       </div>
@@ -30,7 +43,7 @@
         <div class="media-list">
 
           <div class="media">
-          <php>$article = $_result[0];</php>
+            <php>$article = $_result[0];</php>
 
             <div class="media-left">
               <div class="sm-img-overflow img-rounded">
@@ -38,8 +51,13 @@
               </div>
             </div>
             <div class="media-body">
-              <h4 class="media-heading">{$article.title}</h4>
+              <h4 class="media-heading">
+                <a href="{:U('Article/detail?id='.$article['id'])}" class="text-muted">
+                  {$article.title}
+                </a>
+              </h4>
               <h6>{$article.job_title}</h6>
+              <hr>
               <p>{$article.description}</p>
             </div>
           </div>
@@ -53,8 +71,13 @@
               </div>
             </div>
             <div class="media-body">
-              <h4 class="media-heading">{$article.title}</h4>
+              <h4 class="media-heading">
+                <a href="{:U('Article/detail?id='.$article['id'])}" class="text-muted">
+                  {$article.title}
+                </a>
+              </h4>
               <h6>{$article.job_title}</h6>
+              <hr>
               <p>{$article.description}</p>
             </div>
 

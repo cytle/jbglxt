@@ -1,70 +1,87 @@
 <extend name="Base/common"/>
 
 <block name="body">
-          <php > $now_time = NOW_TIME;</php>
+  <php >
+    $now_time = NOW_TIME;
+    $luntan_id = $article['pid'];
+    $luntan = [];
+  </php>
+  <think:article name="luntan" result="luntan" id='".$luntan_id."'>
+</think:article>
 
-  <section class="section-block maincontent">
+<section class="section-block maincontent">
+  <div class="container">
+    <div class="row">
 
-    <div class="container">
-      <div class="row">
+      <div class="maincontent-detail col-md-9">
+        <h2>{$article.title}</h2>
+        <blockquote>
+          <p><b>所属论坛：</b> <a href="{:U('Article/detail?id='.$luntan['id'])}">{$luntan.title}</a></p>
 
-        <div class="maincontent-detail col-md-9">
-          <h2>{$article.title}</h2>
-          <blockquote>
           <p><b>简介：</b>{$article.description|default="无"}</p>
-          </blockquote>
+        </blockquote>
 
-          <div class="maincontent-content">
-            {$article.content}
-          </div>
+        <div class="maincontent-content">
+          {$article.content}
         </div>
+        <hr>
+      </div>
 
-        <div class="maincontent-apply col-md-3">
+      <div class="maincontent-apply col-md-3">
 
-          <ul>
-            <li>
-              <h6>活动开始时间 <small>START TIME</small></h6>
-              <p>{$article.open_time|date='Y年m月d日 H:i:s',###}</p>
-            </li>
-            <li>
-              <h6>地点 <small> ADDRESS</small></h6>
-              <p>{$article.address}</p>
-            </li>
-            <li>
-              <h6>报名截止 <small>STOP SIGN UP AT</small></h6>
-              <p>{$article.sign_up_stop_time|date='Y年m月d日 H:i:s',###}</p>
-            </li>
-            <li>
-              <h6>报名要求 <small>REQUIREMENTS</small></h6>
+        <ul>
 
-              <empty name="article.sign_up_requirements">
-                无要求
-                <else/>
-                <php>
-                  $requirements = explode(';', $article['sign_up_requirements']);
-                </php>
-                <foreach name="requirements" item='requirement'>
-                  <p>• {$requirement}</p>
+          <li>
+            <h6>活动开始时间 <small>START TIME</small></h6>
+            <p>{$article.open_time|date='Y年m月d日 H:i:s',###}</p>
+          </li>
+          <li>
+            <h6>地点 <small> ADDRESS</small></h6>
+            <p>{$article.address}</p>
+          </li>
+          <li>
+            <h6>报名截止 <small>STOP SIGN UP AT</small></h6>
+            <p>{$article.sign_up_stop_time|date='Y年m月d日 H:i:s',###}</p>
+          </li>
+          <li>
+            <h6>报名要求 <small>REQUIREMENTS</small></h6>
 
-                </foreach>
-              </empty>
-            </li>
-          </ul>
+            <empty name="article.sign_up_requirements">
+              无要求
+              <else/>
+              <php>
+                $requirements = explode(';', $article['sign_up_requirements']);
+              </php>
+              <foreach name="requirements" item='requirement'>
+                <p>• {$requirement}</p>
 
-          <hr>
-          <div class="img-overflow-height" style="height: 140px;">
-            <img src="__IMG__/map.jpg">
-          </div>
-          <hr>
-          <egt name="article.sign_up_stop_time" value="$now_time">
+              </foreach>
+            </empty>
+          </li>
+        </ul>
+
+        <hr>
+        <div class="img-overflow-height" style="height: 140px;">
+          <img src="__IMG__/map.jpg">
+        </div>
+        <hr>
+        <egt name="article.sign_up_stop_time" value="$now_time">
+
+          <if condition="is_login()">
             <button class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#selfApplyModal">论坛报名</button>
             <else/>
-            <button class="btn btn-primary btn-lg btn-block" disabled="disabled">已经结束报名</button>
-          </egt>
-        </div>
+            <a class="btn btn-primary btn-lg btn-block" href="{:U('User/login')}">登录后报名</a>
+
+          </if>
+          <else/>
+          <button class="btn btn-primary btn-lg btn-block" disabled="disabled">已经结束报名</button>
+        </egt>
+
       </div>
     </div>
-  </section>
+  </div>
+</section>
+<if condition="is_login()">
 
   <egt name="article.sign_up_stop_time" value="$now_time">
 
@@ -76,62 +93,91 @@
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             <h4 class="modal-title" id="selfApplyModalLabel">会议报名</h4>
           </div>
-          <div class="modal-body">
-            <dl class="dl-horizontal">
-              <dt>名字:</dt>
-              <dd>123123</dd>
-              <dt>联系方式:</dt>
-              <dd>213123213</dd>
+          <form action="__MODULE__/User/baoming" method="post">
 
-            </dl>
-            <form>
+            <div class="modal-body">
+              <p class="lead">
+                报名会议：{$article.title}
+              </p>
+              <p>
+                所属论坛：<a href="{:U('Article/detail?id='.$luntan['id'])}">{$luntan.title}</a>
+              </p>
+              <hr>
+
+              <php>
+                $user=session('user_auth');
+              </php>
               <div class="form-group">
-                <label for="recipient-name" class="control-label">名字:</label>
-                123123
+                <label class="control-label">名字:</label>
+                <input type="text" name="name" class="form-control" value="{$user.username}" readonly="readonly">
               </div>
               <div class="form-group">
-                <label for="message-text" class="control-label">联系方式:</label>
-                213123213
+                <label for="mobile" class="control-label">联系方式:</label>
+                <input type="text"name="mobile"  id="mobile" class="form-control" value="{$user.mobile}" readonly="readonly">
               </div>
-            </form>
+
+              <input type="hidden" name="huiyi_id" value="{$article.id}" />
+
+              <p class="text-danger">* 请确认以上报名信息，替他人报名请使用『代报名』</p>
+              <p class="text-danger">* 一个号码只能报名同一个会议一次</p>
+
+            </div>
+            <div class="modal-footer">
+              <div class="pull-left">
+               <button type="button" class="btn btn-default" data-dismiss="modal" data-toggle="modal" data-target="#otherApplyModal">代报名</button>
+             </div>
+
+             <button type="submit" class="btn btn-primary">报名</button>
+           </div>
+         </form>
+
+       </div>
+     </div>
+   </div>
+
+   <!-- Modal -->
+   <div class="modal fade" id="otherApplyModal" tabindex="-1" role="dialog" aria-labelledby="otherApplyModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="selfApplyModalLabel">会议代报名</h4>
+        </div>
+        <form action="__MODULE__/User/baoming" method="post">
+
+          <div class="modal-body">
+
+            <p class="lead">
+              报名会议：{$article.title}
+            </p>
+            <p>
+              所属论坛：<a href="{:U('Article/detail?id='.$luntan['id'])}" target="_blank">{$luntan.title}</a>
+            </p>
+            <hr>
+            <div class="form-group">
+              <label for="applyName" class="control-label">名字:</label>
+              <input type="text" name="name" id="applyName" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="mobile" class="control-label">联系方式:</label>
+              <input type="text" name="mobile" id="mobile" class="form-control">
+            </div>
+            <p class="text-danger">* 请填写以上报名信息</p>
+            <p class="text-danger">* 一个号码只能报名同一个会议一次</p>
+            <input type="hidden" name="huiyi_id" value="{$article.id}" />
+
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#otherApplyModal">代报名</button>
-            <button type="button" class="btn btn-primary">报名</button>
-          </div>
-        </div>
-      </div>
-    </div>
 
-    <!-- Modal -->
-    <div class="modal fade" id="otherApplyModal" tabindex="-1" role="dialog" aria-labelledby="otherApplyModalLabel">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="selfApplyModalLabel">会议报名</h4>
+            <button type="submit" class="btn btn-primary">报名</button>
           </div>
-          <div class="modal-body">
-            <form>
-              <div class="form-group">
-                <label for="applyName" class="control-label">名字:</label>
-                <input type="text" id="applyName" class="form-control">
-              </div>
-              <div class="form-group">
-                <label for="phone" class="control-label">联系方式:</label>
-                <input type="text" id="phone" class="form-control">
-              </div>
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">报名</button>
-          </div>
-        </div>
+        </form>
       </div>
     </div>
-  </egt>
+  </div>
+</egt>
+
+</if>
 
 
 <include file="Sections/hot_news" />
